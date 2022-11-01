@@ -8,7 +8,7 @@
 #include <math.h>
 #include <time.h>
 
-static const int DEFAULT_CAPACITY = 50;
+static const int DEFAULT_CAPACITY = 64;
 
 typedef struct SetStruct
    {
@@ -21,13 +21,19 @@ typedef struct SetStruct
 
 // prototypes
 
-bool addItem( SetType *setData, int newValue );
+void addItem( SetType *setData, int newValue );
+
+bool checkForSetResize(SetType *set);
 
 void copySet( SetType *dest, const SetType source );
+
+void copyInArray( SetType *dest, const int *source );
 
 bool deleteItem( SetType *setData, int itemToDelete );
 
 void displaySet( const SetType setData );
+
+int *doubleCapacity(SetType *set);
 
 void findIntersection( SetType *intersectSet, 
                                  const SetType oneSet, const SetType otherSet );

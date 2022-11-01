@@ -3,38 +3,62 @@
 #include <stdbool.h>
 #include "SetUtils.h"
 
-bool addItem( SetType *setData, int newValue )
+void addItem( SetType *setData, int newValue )
 {
-   // if should not change
-   if (setData->size == setData->capacity)
-   {
-      // return unchanged
-      return false;
-   }
+   // resize if needed
+   checkForSetResize(setData);
 
-   // otherwise,
    // add to end of set array
    setData->setArray[setData->size] = newValue;
 
    // increase size
    setData->size++;
+}
 
-   // return changed set
+bool checkForSetResize(SetType *set)
+{
+   // if does not need resize
+   if (set->size < set->capacity)
+   {
+      return false;
+   }
+   // otherwise
+   
+   // make bigger array
+   int *oldArray = doubleCapacity(set);
+
+   // copy in data
+   copyInArray(set, oldArray);
+
    return true;
 }
 
+int *doubleCapacity(SetType *set)
+{
+   int *oldArray = set->setArray;
+
+   set->capacity *= 2;
+
+   set->setArray = (int *)malloc( set->capacity * sizeof( int ));
+
+   return oldArray;
+}
 
 void copySet( SetType *dest, const SetType source )
+{
+   dest->capacity = source.capacity;
+   dest->size = source.size;
+   copyInArray(dest, source.setArray);
+}
+
+void copyInArray( SetType *dest, const int *source )
 {
    // initialize variables
    int index;
 
-   dest->capacity = source.capacity;
-   dest->size = source.size;
-
-   for (index = 0; index < source.size; index++)
+   for (index = 0; index < dest->size; index++)
    {
-      dest->setArray[index] = source.setArray[index];
+      dest->setArray[index] = source[index];
    }
 }
 
