@@ -1,13 +1,11 @@
+
 CC = gcc
 DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG)
-LFLAGS = -Wall $(DEBUG)
+LFLAGS = -Wall
 
-Test : SetUtils.o HofUtils.o test.o
-	$(CC) $(LFLAGS) SetUtils.o HofUtils.o test.o -o Test
-
-test.o : test.c SetUtils.h HofUtils.h
-	$(CC) $(CFLAGS) test.c
+QSeqTest : SetUtils.o HofUtils.o qSeqTest.c SetUtils.h
+	$(CC) $(LFLAGS) SetUtils.o HofUtils.o qSeqTest.c -o QSeqTest
 
 SetUtils.o : SetUtils.c SetUtils.h
 	$(CC) $(CFLAGS) SetUtils.c
@@ -16,5 +14,5 @@ HofUtils.o : HofUtils.c HofUtils.h
 	$(CC) $(CFLAGS) HofUtils.c
 
 clean:
-	\rm *.o Test
+	\rm *.o QSeqTest
 

@@ -9,7 +9,10 @@ int main()
 
     initializeDefault(&baseSequence);
 
-    addToSequence(&baseSequence);
+    for (int i = 0; i < 20; i++)
+    {
+        addToSequence(&baseSequence);
+    }
 
     displaySet(baseSequence);
 
