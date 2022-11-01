@@ -153,9 +153,9 @@ void findUnion( SetType *unionSet,
    unionSet->size = indexUnion;
 }
 
-int getIndex(SetType *setData, int index)
+int getIndexHof(SetType *setData, int index)
 {
-   return setData->setArray[index];
+   return setData->setArray[index - 1];
 }
 
 void initializeSet( SetType *set )

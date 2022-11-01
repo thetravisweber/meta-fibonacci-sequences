@@ -35,7 +35,7 @@ void findIntersection( SetType *intersectSet,
 void findUnion( SetType *unionSet, 
                                  const SetType oneSet, const SetType otherSet );
 
-int getIndex(SetType *setData, int index);
+int getIndexHof(SetType *setData, int index);
 
 void initializeSet( SetType *set );
 

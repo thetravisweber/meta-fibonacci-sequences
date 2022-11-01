@@ -4,18 +4,19 @@
 
 bool addToSequence(SetType *sequence)
 {
-    int n = sequence->size;
-    int firstIndex = getIndex(sequence, n-1);
-    int secondIndex = getIndex(sequence, n-2);
+    int n = sequence->size + 1;
+    
+    int firstIndex = n - getIndexHof(sequence, n-1);
+    int secondIndex = n - getIndexHof(sequence, n-2);
 
-    if ((firstIndex < 1) || (secondIndex < 1))
+    if ((firstIndex < 1) || (firstIndex >= n))
     {
         return false;
     }
 
     // subtracting one to convert to c indexing
-    int nextTerm = getIndex(sequence, firstIndex - 1) + 
-                getIndex(sequence, secondIndex - 1);
+    int nextTerm = getIndexHof(sequence, firstIndex) + 
+                getIndexHof(sequence, secondIndex);
 
     addItem(sequence, nextTerm);
 
