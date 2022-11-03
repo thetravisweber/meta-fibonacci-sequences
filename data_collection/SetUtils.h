@@ -25,9 +25,13 @@ void addItem( SetType *setData, int newValue );
 
 bool checkForSetResize(SetType *set);
 
+void clearSet( SetType *set );
+
 void copySet( SetType *dest, const SetType source );
 
 void copyInArray( SetType *dest, const int *source );
+
+void copyInHardArray( SetType *dest, const int source[DEFAULT_CAPACITY], int size );
 
 bool deleteItem( SetType *setData, int itemToDelete );
 

@@ -4,6 +4,12 @@ DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG)
 LFLAGS = -Wall
 
+CollectAll : SetUtils.o HofUtils.o CollectAll.c SetUtils.h
+	$(CC) $(LFLAGS) SetUtils.o HofUtils.o CollectAll.c -o CollectAll
+
+UntilTermTest : SetUtils.o HofUtils.o untilTermTest.c SetUtils.h
+	$(CC) $(LFLAGS) SetUtils.o HofUtils.o untilTermTest.c -o UntilTermTest
+
 QSeqTest : SetUtils.o HofUtils.o qSeqTest.c SetUtils.h
 	$(CC) $(LFLAGS) SetUtils.o HofUtils.o qSeqTest.c -o QSeqTest
 
@@ -14,5 +20,5 @@ HofUtils.o : HofUtils.c HofUtils.h
 	$(CC) $(CFLAGS) HofUtils.c
 
 clean:
-	\rm *.o QSeqTest
+	\rm *.o QSeqTest UntilTermTest CollectAll
 

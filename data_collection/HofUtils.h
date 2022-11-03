@@ -13,4 +13,6 @@ bool addToSequence(SetType *sequence);
 
 void initializeDefault(SetType *sequence);
 
+int runToTermination(SetType *sequence, int max);
+
 #endif

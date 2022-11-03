@@ -28,3 +28,16 @@ void initializeDefault(SetType *sequence)
     addItem(sequence, 1);
     addItem(sequence, 1);
 }
+
+int runToTermination(SetType *sequence, int max)
+{
+    while (sequence->size < max)
+    {
+        if (!addToSequence(sequence))
+        {
+            return sequence->size;
+        }
+    }
+
+    return max;
+}

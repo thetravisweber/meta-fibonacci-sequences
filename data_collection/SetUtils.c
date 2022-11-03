@@ -33,15 +33,10 @@ bool checkForSetResize(SetType *set)
    return true;
 }
 
-int *doubleCapacity(SetType *set)
+void clearSet( SetType *set )
 {
-   int *oldArray = set->setArray;
-
-   set->capacity *= 2;
-
-   set->setArray = (int *)malloc( set->capacity * sizeof( int ));
-
-   return oldArray;
+   // not whiping data, no need
+   set->size = 0;
 }
 
 void copySet( SetType *dest, const SetType source )
@@ -62,6 +57,18 @@ void copyInArray( SetType *dest, const int *source )
    }
 }
 
+void copyInHardArray( SetType *dest, const int source[DEFAULT_CAPACITY], int size )
+{
+   // initialize variables
+   int index;
+
+   for (index = 0; index < size; index++)
+   {
+      dest->setArray[index] = source[index];
+   }
+
+   dest->size = size;
+}
 
 bool deleteItem( SetType *setData, int itemToDelete )
 {
@@ -122,6 +129,16 @@ void displaySet( const SetType setData )
    printf("\n");
 }
 
+int *doubleCapacity(SetType *set)
+{
+   int *oldArray = set->setArray;
+
+   set->capacity *= 2;
+
+   set->setArray = (int *)malloc( set->capacity * sizeof( int ));
+
+   return oldArray;
+}
 
 void findIntersection( SetType *intersectSet, 
                                  const SetType oneSet, const SetType otherSet )
